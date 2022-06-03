@@ -4,6 +4,7 @@ from pages.ProgressPage import ProgressPage
 from pages.TrainingsPage import TrainingsPage
 from pages.ViewCoursesPage import ViewCoursesPage
 from pages.CoursePage import CoursePage
+from pages.TakeQuizPage import TakeQuizPage
 
 
 class MainView(tk.Frame):
@@ -24,6 +25,9 @@ class MainView(tk.Frame):
         course_builder_page = CourseBuilderPage()
         course_builder_page.config(bg="Gray")
 
+        take_quiz_page = TakeQuizPage(course_name=None)
+        take_quiz_page.config(bg="Gray")
+
         button_bar = tk.Frame(self)
         container = tk.Frame(self)
         button_bar.pack(side="top", fill="x", expand=False)
@@ -34,6 +38,7 @@ class MainView(tk.Frame):
         trainings_page.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         progress_page.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         course_builder_page.place(in_=container,x=0, y=0, relwidth=1, relheight=1)
+        take_quiz_page.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
         view_courses_btn = tk.Button(button_bar, text="View Courses", command=view_courses_page.lift)
         trainings_btn = tk.Button(button_bar, text="Trainings", command=trainings_page.lift)

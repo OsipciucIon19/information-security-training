@@ -2,32 +2,39 @@ import csv
 import tkinter as tk
 from pages.PageSingleton import PageSingleton
 from CourseBuilder.Director import Director
-from CourseBuilder.builder import WebCourseBuilder, ApiCourseBuilder, FrontEndCourseBuilder
+from CourseBuilder.builder import WebCourseBuilder, ApiCourseBuilder, FrontEndCourseBuilder, AwsCourseBuilder
 
 
 class CourseBuilderPage(PageSingleton):
-    COURSE_TYPES = ["Web", "Api", "Front-end"]
+    COURSE_TYPES = ["Web", "Api", "Front-end", "Aws"]
 
     def __init__(self, *args, **kwargs):
         PageSingleton.__init__(self, *args, **kwargs)
 
         def create_course():
             builder = None
+            course_title = title_var.get()
+            course_content = content_text.get('1.0', tk.END)
             course_type = type_var.get()
             if course_type == 'Web':
                 builder = WebCourseBuilder(
-                    title_var.get(),
-                    content_text.get('1.0', tk.END)
+                    course_title,
+                    course_content
                 )
             elif course_type == 'Api':
                 builder = ApiCourseBuilder(
-                    title_var.get(),
-                    content_text.get('1.0', tk.END)
+                    course_title,
+                    course_content
                 )
             elif course_type == 'Front-end':
                 builder = FrontEndCourseBuilder(
-                    title_var.get(),
-                    content_text.get('1.0', tk.END)
+                    course_title,
+                    course_content
+                )
+            elif course_type == 'Aws':
+                builder = AwsCourseBuilder(
+                    course_title,
+                    course_content
                 )
 
             director = Director()
