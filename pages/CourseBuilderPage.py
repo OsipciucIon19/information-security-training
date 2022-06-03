@@ -40,7 +40,6 @@ class CourseBuilderPage(PageSingleton):
             director = Director()
             director.set_builder(builder)
             course = director.get_course()
-            print(course.get_course())
 
             with open('data/courses.csv', 'a', newline='') as csv_file:
                 spam_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)

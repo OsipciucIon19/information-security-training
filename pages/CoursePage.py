@@ -24,6 +24,6 @@ class CoursePage(PageSingleton):
             label2 = tk.Text(frame, width="150", height="35", bg="#c3c3c3")
             label2.insert(tk.END, course[2])
             label2.pack(side="bottom")
-            button1 = tk.Button(frame, text='Take quiz', command=lambda course_name=course[0]:take_quiz(course_name))
+            button1 = tk.Button(frame, text='Take quiz', command=lambda course_name=course[0]: take_quiz(course_name))
             button1.pack(side="right", ipadx=50)
 

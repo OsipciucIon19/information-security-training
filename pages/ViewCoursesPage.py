@@ -26,5 +26,3 @@ class ViewCoursesPage(PageSingleton):
                 button1.pack(side="right", ipadx=50)
                 label2 = tk.Label(frame, text=f"Course Type: {row[1]}", bg="Gray", fg="#c3c3c3")
                 label2.pack(side="right")
-
-

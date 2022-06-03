@@ -1,4 +1,4 @@
-from CourseBuilder.Course import Course
+from entities.Course import Course
 
 
 class Director:

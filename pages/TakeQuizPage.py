@@ -8,20 +8,31 @@ class TakeQuizPage(PageSingleton):
         PageSingleton.__init__(self, *args, **kwargs)
         self.course_name = course_name
 
-        def verify(cans):
-            block.set(1)
+        def verify(ans, exercises, cname):
+            global grade
 
-            if title_var.get() == cans:
-                print(1)
-                return 1
-            else:
-                print(0)
-                return 0
+            ans = ans.strip().split(',')
+            points = 0
+            correct_ans = []
+
+            for ex in exercises:
+                correct_ans.append(ex.split(',')[1])
+            for i in range(len(ans)):
+                if ans[i].strip() == correct_ans[i]:
+                    points += 1
+            grade = points / len(exercises) * 100
+            verify_button.config(state='disabled')
+
+            with open('data/training_grades.csv', 'a', newline='') as file:
+                spam_writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                spam_writer.writerow([f"{cname}", f"{grade}"])
+
+            self.destroy()
 
         frame = tk.LabelFrame(self, text=f'{course_name} Quiz', bg="Gray")
         frame.place(in_=self, relwidth=1)
 
-        label1 = tk.Label(frame, text=course_name, bg="Gray", fg='#FFF')
+        label1 = tk.Label(frame, text="Answer this questions with responses separated by comma", bg="Gray", fg='#FFF')
         label1.pack(side="left", expand=True)
 
         with open('data/trainings.csv', newline='') as csv_file:
@@ -31,29 +42,22 @@ class TakeQuizPage(PageSingleton):
                 if row[0] == course_name:
                     quiz_exercises = row[1].splitlines()
 
-                    points = 0
-                    max_points = len(quiz_exercises)
-                    block = tk.IntVar()
-
                     for exercise in quiz_exercises:
                         exercise = exercise.split(',')
-                        print(block.get())
 
-                        title_label = tk.Label(self, text=exercise[0], bg="Gray", fg='#FFF')
+                        title_label = tk.Label(frame, text=exercise[0], bg="Gray", fg='#FFF')
                         title_label.pack(expand=True)
 
-                        title_var = tk.StringVar()
-                        title_entry = tk.Entry(self, width="50", textvariable=title_var)
-                        title_entry.pack(expand=True)
+                    grade = 0
 
-                        create = tk.Button(
-                            self,
-                            text="Check result",
-                            # command=lambda correct_answer=exercise[1]: verify(correct_answer)
-                            command= lambda: block.set(1)
-                        )
-                        create.pack(expand=True)
+                    title_var = tk.StringVar()
+                    title_entry = tk.Entry(frame, width="50", textvariable=title_var)
+                    title_entry.pack(expand=True)
 
-                        # create.wait_variable(block)
-
+                    verify_button = tk.Button(
+                        frame,
+                        text="Submit results",
+                        command=lambda: verify(title_var.get(), quiz_exercises, course_name)
+                    )
+                    verify_button.pack(expand=True)
 

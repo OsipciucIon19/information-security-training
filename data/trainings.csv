@@ -1,5 +1,9 @@
-"Capital One SSRF","qst2.1,ans2.1
+"Capital One SSRF","What is the answer for the first question?,answer
+What is the answer for the second question?,answer
+What is the answer for the third question?,answer"
+"Cross Site Scripting","qst2.1,ans2.1
 qst2.2,ans2.2
 qst2.3,ans2.3"
-"Cross Site Scripting", "[('qst2.1', 'ans2.1'), ('qst2.2', 'ans2.2'), ('qst2.3', 'ans2.3')]"
-Improper Assets Management,2,3,45,"The Next comma I want to write and not separate to another cell, so this sentence will be whole",6,7,8
+Improper Assets Management,"qst2.1,ans2.1
+qst2.2,ans2.2
+qst2.3,ans2.3"
