@@ -1,6 +1,5 @@
 import tkinter as tk
 
-from entities.Course import Course
 from pages.CourseBuilderPage import CourseBuilderPage
 from pages.ProgressPage import ProgressPage
 from pages.TrainingsPage import TrainingsPage
