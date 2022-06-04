@@ -27,7 +27,7 @@ class MainView(tk.Frame):
         course_builder_page = CourseBuilderPage()
         course_builder_page.config(bg="Gray")
 
-        take_quiz_page = TakeQuizPage(course=Course())
+        take_quiz_page = TakeQuizPage(course_name=None)
         take_quiz_page.config(bg="Gray")
 
         button_bar = tk.Frame(self)

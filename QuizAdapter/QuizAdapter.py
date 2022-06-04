@@ -9,7 +9,6 @@ class QuizAdapter:
         self.course = course
 
     def take_quiz(self):
-        quiz = TakeQuizPage(self.course)
-        print(quiz)
+        quiz = TakeQuizPage(self.course.get_course()[0])
         quiz.config(bg="Gray")
         quiz.lift()

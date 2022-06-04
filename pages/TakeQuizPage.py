@@ -6,11 +6,9 @@ from pages.PageSingleton import PageSingleton
 
 
 class TakeQuizPage(PageSingleton):
-    course: Course
-
-    def __init__(self, course, *args, **kwargs):
+    def __init__(self, course_name, *args, **kwargs):
         PageSingleton.__init__(self, *args, **kwargs)
-        self.course = course
+        self.course_name = course_name
 
         def verify(ans, exercises, cname):
             global grade
@@ -33,7 +31,7 @@ class TakeQuizPage(PageSingleton):
 
             self.destroy()
 
-        frame = tk.LabelFrame(self, text=f'{self.course.get_course()[0]} Quiz', bg="Gray")
+        frame = tk.LabelFrame(self, text=f'{self.course_name} Quiz', bg="Gray")
         frame.place(in_=self, relwidth=1)
 
         label1 = tk.Label(frame, text="Answer this questions with responses separated by comma", bg="Gray", fg='#FFF')
@@ -43,7 +41,7 @@ class TakeQuizPage(PageSingleton):
             file_data = csv.reader(csv_file, delimiter=',', quotechar='"')
 
             for row in file_data:
-                if row[0] == self.course.get_course()[0]:
+                if row[0] == self.course_name:
                     quiz_exercises = row[1].splitlines()
 
                     for exercise in quiz_exercises:
@@ -61,7 +59,7 @@ class TakeQuizPage(PageSingleton):
                     verify_button = tk.Button(
                         frame,
                         text="Submit results",
-                        command=lambda: verify(title_var.get(), quiz_exercises, course.get_course()[0])
+                        command=lambda: verify(title_var.get(), quiz_exercises, self.course_name)
                     )
                     verify_button.pack(expand=True)
 

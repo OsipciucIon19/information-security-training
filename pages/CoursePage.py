@@ -3,7 +3,6 @@ import tkinter as tk
 from QuizAdapter.QuizAdapter import QuizAdapter
 from entities.Course import Course
 from pages.PageSingleton import PageSingleton
-from pages.TakeQuizPage import TakeQuizPage
 
 
 class CoursePage(PageSingleton):
