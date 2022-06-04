@@ -1,3 +1,4 @@
+import math
 import tkinter as tk
 import csv
 
@@ -22,7 +23,7 @@ class TakeQuizPage(PageSingleton):
             for i in range(len(ans)):
                 if ans[i].strip() == correct_ans[i]:
                     points += 1
-            grade = points / len(exercises) * 100
+            grade = math.trunc(points / len(exercises) * 100)
             verify_button.config(state='disabled')
 
             with open('data/training_grades.csv', 'a', newline='') as file:
