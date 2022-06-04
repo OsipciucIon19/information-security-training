@@ -1,12 +1,16 @@
 import tkinter as tk
 import csv
+
+from entities.Course import Course
 from pages.PageSingleton import PageSingleton
 
 
 class TakeQuizPage(PageSingleton):
-    def __init__(self, course_name, *args, **kwargs):
+    course: Course
+
+    def __init__(self, course, *args, **kwargs):
         PageSingleton.__init__(self, *args, **kwargs)
-        self.course_name = course_name
+        self.course = course
 
         def verify(ans, exercises, cname):
             global grade
@@ -29,7 +33,7 @@ class TakeQuizPage(PageSingleton):
 
             self.destroy()
 
-        frame = tk.LabelFrame(self, text=f'{course_name} Quiz', bg="Gray")
+        frame = tk.LabelFrame(self, text=f'{self.course.get_course()[0]} Quiz', bg="Gray")
         frame.place(in_=self, relwidth=1)
 
         label1 = tk.Label(frame, text="Answer this questions with responses separated by comma", bg="Gray", fg='#FFF')
@@ -39,7 +43,7 @@ class TakeQuizPage(PageSingleton):
             file_data = csv.reader(csv_file, delimiter=',', quotechar='"')
 
             for row in file_data:
-                if row[0] == course_name:
+                if row[0] == self.course.get_course()[0]:
                     quiz_exercises = row[1].splitlines()
 
                     for exercise in quiz_exercises:
@@ -57,7 +61,7 @@ class TakeQuizPage(PageSingleton):
                     verify_button = tk.Button(
                         frame,
                         text="Submit results",
-                        command=lambda: verify(title_var.get(), quiz_exercises, course_name)
+                        command=lambda: verify(title_var.get(), quiz_exercises, course.get_course()[0])
                     )
                     verify_button.pack(expand=True)
 
