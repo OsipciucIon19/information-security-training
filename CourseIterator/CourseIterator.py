@@ -12,12 +12,15 @@ class AbstractIterator(ABC):
 class CourseIterator(AbstractIterator):
     def __init__(self, courses):
         self.index = 0
-        self.course_names = courses
+        self.courses = courses
 
     def has_next(self):
-        return True if self.index < len(self.course_names) else False
+        return True if self.index < len(self.courses) else False
 
     def next(self):
-        course = self.course_names[self.index]
+        course = self.courses[self.index]
         self.index += 1
         return course
+
+    def get_length(self):
+        return len(self.courses)
