@@ -26,7 +26,7 @@ class TakeQuizPage(PageSingleton):
             grade = math.trunc(points / len(exercises) * 100)
             verify_button.config(state='disabled')
 
-            with open('data/training_grades.csv', 'a', newline='') as file:
+            with open('data/training-grades.csv', 'a', newline='') as file:
                 spam_writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 spam_writer.writerow([f"{cname}", f"{grade}"])
 
