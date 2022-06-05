@@ -21,5 +21,5 @@ class TrainingsPage(PageSingleton):
 
                 label1 = tk.Label(frame, text=row[0], bg="Gray", fg='#FFF')
                 label1.pack(side="left", expand=True)
-                button1 = tk.Button(frame, text='Take quiz', command=lambda: proxy_quiz.load_quiz())
+                button1 = tk.Button(frame, text='Take quiz', command=lambda: proxy_quiz.take_quiz())
                 button1.pack(side="right", ipadx=50)
