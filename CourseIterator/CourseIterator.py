@@ -21,6 +21,3 @@ class CourseIterator(AbstractIterator):
         course = self.courses[self.index]
         self.index += 1
         return course
-
-    def get_length(self):
-        return len(self.courses)
