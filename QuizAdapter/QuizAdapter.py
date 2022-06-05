@@ -1,11 +1,13 @@
 from entities import Course
+from entities.Quiz import Quiz
 from pages.TakeQuizPage import TakeQuizPage
 
 
-class QuizAdapter:
+class QuizAdapter(Quiz):
     course: Course
 
     def __init__(self, course):
+        super().__init__(self)
         self.course = course
 
     def take_quiz(self):

@@ -3,3 +3,5 @@
 "SQL Injection","Web","content 3 sql injection"
 "Improper Assets Management","Api","content21 improper assets"
 "Excessive Data Exposure","Api","Excessive data exposure occurs when an application, via API response, returns more information than necessary for a user to perform a specific action. When API developers mistakenly think that since data is not visible, it's not susceptible - that is when companies open their APIs to sensitive data exposure which can result in horrible situations like identity theft, fraud, and even leaked trade secrets. With over 155.8 million individuals in the US affected by data breaches in 2020 alone, protecting sensitive data exposure has been a major focus for the OWASP organization to help developers understand that hidden data is still highly vulnerable to attackers."
+test,Aws,"test
+"

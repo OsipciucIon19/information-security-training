@@ -5,9 +5,6 @@ class Quiz:
     def __init__(self, quiz_name):
         self.quiz_name = quiz_name
 
-    def get_name(self):
-        return self.quiz_name
-
     def take_quiz(self):
         quiz = TakeQuizPage(self.quiz_name)
         quiz.config(bg="Gray")
